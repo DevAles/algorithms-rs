@@ -1,4 +1,4 @@
-fn bubble_sort(arr: &mut [i32]) {
+pub fn bubble_sort(arr: &mut [i32]) {
     for i in 0..arr.len() - 1 {
         for j in 0..arr.len() - 1 - i {
             if arr[j] > arr[j + 1] {
@@ -11,6 +11,24 @@ fn bubble_sort(arr: &mut [i32]) {
 }
 
 fn main() {
-    let mut arr = [1, 3, 2, 9, 4, 92, 43, 58, 21];
-    bubble_sort(&mut arr);
+    println!(
+        "Please run \"cargo test\" to run all algorithms or \
+             \"cargo test <name-of-algorithm>_test\" \
+             to run a specific algorithm \
+             (example: cargo test bubble_sort_test)"
+    );
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    const RIGHT_ARR: [i32; 9] = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    #[test]
+    fn bubble_sort_test() {
+        let mut arr = [1, 3, 2, 4, 6, 5, 9, 7, 8];
+        bubble_sort(&mut arr);
+
+        assert_eq!(arr, RIGHT_ARR);
+    }
 }
