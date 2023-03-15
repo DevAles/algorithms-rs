@@ -10,6 +10,22 @@ pub fn bubble_sort(arr: &mut [i32]) {
     println!("{:?}", arr);
 }
 
+pub fn selection_sort(arr: &mut [i32]) {
+    for i in 0..arr.len() {
+        let mut min_index = i;
+
+        for j in i + 1..arr.len() {
+            if arr[j] < arr[min_index] {
+                min_index = j;
+            }
+        }
+
+        if min_index != i {
+            arr.swap(i, min_index);
+        }
+    }
+}
+
 fn main() {
     println!(
         "Please run \"cargo test\" to run all algorithms or \
